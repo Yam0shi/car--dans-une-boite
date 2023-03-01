@@ -11,15 +11,11 @@ public class Player : MonoBehaviour
     [Header("Objet à récupérer : ")]
     [SerializeField] GameObject theBox;
 
-    [Header("Animation Bleh : ")]
-    public Animator disney;
-    [SerializeField] int dirIndex;
-
     [Header("Stats : ")]
     [Range(0f, 20f)]
     public float speed;
-    private bool hastriggered;
 
+    [Header("autre : ")]
     [SerializeField] bool CanMove;
 
     void Start()
@@ -30,7 +26,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        TheBoxMove();
         if(CanMove)
         {
             PlayerMove();
@@ -41,28 +36,6 @@ public class Player : MonoBehaviour
     {
         float AxisX = Input.GetAxis("Horizontal") * speed;
         myRb2d.velocity = AxisX * Vector3.right;
-    }
-
-    void TheBoxMove()
-    {
-        if (Input.GetAxis("Left Trigger") < 0.1 && Input.GetAxis("Right Trigger") < 0.1)
-        {
-            hastriggered = false;
-        }
-
-        if (Input.GetAxis("Left Trigger") >= 0.1/* && !hastriggered*/)
-        {
-            Debug.Log("gauche");
-            theBox.transform.Rotate(0, 0, 90 * Time.deltaTime);
-            hastriggered = true;
-        }
-
-        if (Input.GetAxis("Right Trigger") >= 0.1/* && !hastriggered*/)
-        {
-            Debug.Log("droite");
-            theBox.transform.Rotate(0, 0, -90 * Time.deltaTime);
-            hastriggered = true;
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
