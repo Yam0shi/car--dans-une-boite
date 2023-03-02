@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -16,10 +16,11 @@ public class Player : MonoBehaviour
     public float speed;
 
     [Header("autre : ")]
-    [SerializeField] bool CanMove;
+    [SerializeField] bool CanMove, deadOfTheGrave;
 
     void Start()
     {
+        deadOfTheGrave = false;
         myRb2d = GetComponent<Rigidbody2D>();
         theBox = GameObject.Find("theBox");
     }
@@ -29,6 +30,10 @@ public class Player : MonoBehaviour
         if(CanMove)
         {
             PlayerMove();
+        }
+        if(deadOfTheGrave)
+        {
+            SceneManager.LoadScene(2);
         }
     }
 
@@ -43,6 +48,12 @@ public class Player : MonoBehaviour
         if(collision.gameObject == theBox)
         {
             CanMove = true;
+        }
+
+        if(collision.gameObject.CompareTag("it's a trap"))
+        {
+            Destroy(gameObject);
+            deadOfTheGrave = true;
         }
     }
 
