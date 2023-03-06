@@ -10,11 +10,9 @@ public class UiScript : MonoBehaviour
     [SerializeField] TMP_Text survivingTimeTxt, bestSurvivingTimeTxt;
     [SerializeField] int secondes, bestSecondes, minutes, bestMinutes, heures, bestHeure, speedTime;
     [SerializeField] float timer;
-    [SerializeField] string milis, bestMilis;
 
     void Start()
     {
-
         survivingTimeTxt = GameObject.Find("survivingTime").GetComponent<TMP_Text>();
         bestSurvivingTimeTxt = GameObject.Find("BestSurvivingTime").GetComponent<TMP_Text>();
 
@@ -43,7 +41,6 @@ public class UiScript : MonoBehaviour
         heures = (int)timer / 3600;
         minutes = (int)timer / 60;
         secondes = (int)timer - minutes * 60;
-        milis = timer.ToString("f2").Split(',')[1];
         #endregion
 
         #region(updateHighScore)
@@ -75,9 +72,9 @@ public class UiScript : MonoBehaviour
         bestSurvivingTimeTxt.text = bestHeure.ToString("00") + ":" + bestMinutes.ToString("00") + ":" + bestSecondes.ToString("00");
 
         Debug.Log("setSave");
-        PlayerPrefs.SetInt("BestHeureSave", bestHeure);
-        PlayerPrefs.SetInt("BestMinuteSave", bestMinutes);
-        PlayerPrefs.SetInt("BestSecondesSave", bestSecondes);
+       PlayerPrefs.SetInt("BestHeureSave", bestHeure);
+       PlayerPrefs.SetInt("BestMinuteSave", bestMinutes);
+       PlayerPrefs.SetInt("BestSecondesSave", bestSecondes);
 
     }
 }

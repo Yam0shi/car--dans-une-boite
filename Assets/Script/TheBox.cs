@@ -1,31 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TheBox : MonoBehaviour
 {
     [SerializeField] bool hastriggered;
     [SerializeField] float timer, totalTurn, turnRate;
+    [SerializeField] AudioSource turnBoxSFX;
+    [SerializeField] AudioClip TurnSound;
 
-    void Update()
+    private void FixedUpdate()
     {
-        TheBoxMove();
         if (timer > 0)
         {
             timer -= Time.deltaTime;
         }
     }
+    void Update()
+    {
+        TheBoxMove();
+
+    }
 
     void TheBoxMove()
     {
+        #region(choix de la direction de rotation)
         if (Input.GetAxis("Left Trigger") < 0.1 && Input.GetAxis("Right Trigger") < 0.1)
         {
             hastriggered = false;
         }
 
-        if (Input.GetAxis("Left Trigger") >= 0.1)
+        if (Input.GetAxis("Left Trigger") >= 0.1 || Input.GetButtonDown("Left Button")) 
         {
-            Debug.Log("gauche");
+            turnBoxSFX.PlayOneShot(TurnSound);
             if (!hastriggered && timer <= 0)
             {
                 hastriggered = true;
@@ -33,9 +41,9 @@ public class TheBox : MonoBehaviour
                 timer = 90 / turnRate + 0.08f;
             }
         }
-        else if (Input.GetAxis("Right Trigger") >= 0.1)
+        else if (Input.GetAxis("Right Trigger") >= 0.1 || Input.GetButtonDown("Right Button"))
         {
-            Debug.Log("droite");
+            turnBoxSFX.PlayOneShot(TurnSound);
             if (!hastriggered && timer <= 0)
             {
                 hastriggered = true;
@@ -43,7 +51,8 @@ public class TheBox : MonoBehaviour
                 timer = 90 / turnRate + 0.08f;
             }
         }
-
+        #endregion
+        #region(calcul de la rotation)
         if (totalTurn < 0 && transform.rotation.eulerAngles.z > 350)
         {
             totalTurn = 360 + totalTurn;
@@ -76,4 +85,5 @@ public class TheBox : MonoBehaviour
             }
         }
     }
+    #endregion
 }

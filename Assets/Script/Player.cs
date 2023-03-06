@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     [Header("Objet à récupérer : ")]
     [SerializeField] GameObject theBox;
+    [SerializeField] GameObject[] playerWalk;
 
     [Header("Stats : ")]
     [Range(0f, 20f)]
@@ -41,8 +42,24 @@ public class Player : MonoBehaviour
     {
         float AxisX = Input.GetAxis("Horizontal") * speed;
         myRb2d.velocity = AxisX * Vector3.right;
+        if(Input.GetAxis("Horizontal") > 0.1f)
+        {
+            playerWalk[0].SetActive(true);
+            playerWalk[1].SetActive(false);
+        }
+        else if (Input.GetAxis("Horizontal") < -0.1f)
+        {
+            playerWalk[0].SetActive(false);
+            playerWalk[1].SetActive(true);
+        }
+        else if (Input.GetAxis("Horizontal") >  -0.07f  && Input.GetAxis("Horizontal") < 0.07f)
+        {
+            playerWalk[0].SetActive(false);
+            playerWalk[1].SetActive(false);
+        }
     }
 
+    #region(gestion des collision avec le joueur)
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject == theBox)
@@ -52,7 +69,6 @@ public class Player : MonoBehaviour
 
         if(collision.gameObject.CompareTag("it's a trap"))
         {
-            Destroy(gameObject);
             deadOfTheGrave = true;
         }
     }
@@ -64,4 +80,5 @@ public class Player : MonoBehaviour
             CanMove = false;
         }
     }
+    #endregion
 }

@@ -12,7 +12,6 @@ public class ColorChange : MonoBehaviour
     [SerializeField] Bloom b;
     void Start()
     {
-        
         globalVolume = GetComponentInChildren<Volume>();
         globalVolume.profile.TryGet(out b);
         StartCoroutine(ColorSwap(2));
