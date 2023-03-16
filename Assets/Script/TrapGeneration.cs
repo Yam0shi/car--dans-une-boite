@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class TrapGeneration : MonoBehaviour
@@ -15,25 +16,23 @@ public class TrapGeneration : MonoBehaviour
         StartCoroutine(RandomizerSpawnTrap());
     }
 
-    void Update()
-    {
-
-    }
-
     IEnumerator RandomizerSpawnTrap()
     {
         randomPatern = (int)Random.Range(0, 19);
         chooseRotation = (int)Random.Range(0,7);
+
         yield return new WaitForSeconds(1);
-        Quaternion rotation = new Quaternion(0, 0, randomRoation[chooseRotation], .5f);
-        GameObject instanciateTrap = Instantiate(prefabTrap[randomPatern], new Vector2(transform.position.x, transform.position.y), rotation);
+
+        GameObject instanciateTrap = Instantiate(prefabTrap[randomPatern], transform.position, new Quaternion(0, 0, 0, 1));
+
         #region(gestion du trap à son pop)
         instanciateTrap.GetComponent<PolygonCollider2D>().enabled = false;
         instanciateTrap.transform.SetParent(gameObject.transform);
-        instanciateTrap.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        instanciateTrap.transform.rotation = rotation;
+        //instanciateTrap.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        instanciateTrap.transform.localRotation = new Quaternion(0, 0, randomRoation[chooseRotation], 1);
         instanciateTrap.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, .2f);
         #endregion
+
         #region(blink)
         yield return new WaitForSeconds(.5f);
         instanciateTrap.SetActive(false);
@@ -56,6 +55,7 @@ public class TrapGeneration : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         instanciateTrap.SetActive(true);
         #endregion
+        
         #region(postblink)
         for (int i = 0; i < instanciateTrap.transform.childCount; i++)
         {
@@ -66,6 +66,7 @@ public class TrapGeneration : MonoBehaviour
         yield return new WaitForSeconds(.7f);
         Destroy(instanciateTrap);
         #endregion
+        
         StartCoroutine(RandomizerSpawnTrap());
     }
 }
