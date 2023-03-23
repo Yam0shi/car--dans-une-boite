@@ -46,6 +46,8 @@ public class TrapGeneration : MonoBehaviour
         #endregion
 
         yield return new WaitForSeconds(2.5f);
+
+        Destroy(instanciateTrap);
         StartCoroutine(RandomizerSpawnTrap());
     }
 }

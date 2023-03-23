@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TrapsBehavior : MonoBehaviour
 {
+    public bool affectGravity;
+
 
     void Start()
     {
@@ -14,6 +16,7 @@ public class TrapsBehavior : MonoBehaviour
     {
         #region(gestion du trap à son pop)
         GetComponent<Collider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().gravityScale = 0;
         GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, .2f);
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -49,6 +52,12 @@ public class TrapsBehavior : MonoBehaviour
         {
             transform.GetChild(i).gameObject.SetActive(true);
         }
+
+        if (affectGravity)
+        {
+            GetComponent<Rigidbody2D>().gravityScale = 5;
+        }
+
         GetComponent<Collider2D>().enabled = true;
         GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
         yield return new WaitForSeconds(.7f);
