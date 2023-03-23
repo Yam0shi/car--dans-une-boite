@@ -52,6 +52,7 @@ public class TrapsBehavior : MonoBehaviour
         GetComponent<Collider2D>().enabled = true;
         GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
         yield return new WaitForSeconds(.7f);
+
         Destroy(gameObject);
         #endregion
     }
