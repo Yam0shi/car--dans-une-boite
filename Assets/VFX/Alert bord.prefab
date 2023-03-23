@@ -751,7 +751,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 5
+      value: 0.5
       mode: 0
       spread: 0
       speed:
@@ -5579,7 +5579,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 5
+      value: 0.5
       mode: 0
       spread: 0
       speed:
@@ -9681,11 +9681,11 @@ Transform:
   m_GameObject: {fileID: 2728333879961380404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.4965997, y: -2.83353, z: -34.007}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.2727265, y: 2.2727265, z: 2.2727268}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2728333879573097947}
   - {fileID: 2728333878925882943}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

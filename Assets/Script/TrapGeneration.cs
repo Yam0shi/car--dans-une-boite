@@ -25,11 +25,14 @@ public class TrapGeneration : MonoBehaviour
 
         GameObject instanciateTrap = Instantiate(prefabTrap[randomPatern], transform.position, new Quaternion(0, 0, 0, 1));
 
-        #region(gestion du trap à son pop)
-        instanciateTrap.GetComponent<PolygonCollider2D>().enabled = false;
+        #region(spawntrap)
         instanciateTrap.transform.SetParent(gameObject.transform);
         //instanciateTrap.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         instanciateTrap.transform.localRotation = new Quaternion(0, 0, randomRoation[chooseRotation], 1);
+        #endregion
+
+/*        #region(gestion du trap à son pop)
+        instanciateTrap.GetComponent<PolygonCollider2D>().enabled = false;
         instanciateTrap.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, .2f);
         #endregion
 
@@ -65,7 +68,7 @@ public class TrapGeneration : MonoBehaviour
         instanciateTrap.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
         yield return new WaitForSeconds(.7f);
         Destroy(instanciateTrap);
-        #endregion
+        #endregion*/
         
         StartCoroutine(RandomizerSpawnTrap());
     }
