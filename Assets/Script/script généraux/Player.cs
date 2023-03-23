@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
     #region(gestion des collision avec le joueur)
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject == theBox)
+        if(collision.gameObject.layer == 3)
         {
             CanMove = true;
         }

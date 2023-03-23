@@ -5,11 +5,20 @@ using UnityEngine;
 public class TrapsBehavior : MonoBehaviour
 {
     public bool affectGravity;
-
+    public bool disappearwall;
+    private GameObject daWall;
 
     void Start()
     {
-        StartCoroutine(Thingy());
+        if (disappearwall)
+        {
+            StartCoroutine(Wall());
+        }
+        else
+        {
+            StartCoroutine(Thingy());
+        }
+        
     }
 
     IEnumerator Thingy()
@@ -66,4 +75,53 @@ public class TrapsBehavior : MonoBehaviour
         #endregion
     }
 
+    IEnumerator Wall()
+    {
+        GameObject childEffect = transform.GetChild(0).gameObject;
+
+        GetComponent<Rigidbody2D>().gravityScale = 0;
+        GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0f);
+
+        #region(blink)
+        yield return new WaitForSeconds(.5f);
+        childEffect.SetActive(false);
+        yield return new WaitForSeconds(.4f);
+        childEffect.SetActive(true);
+        yield return new WaitForSeconds(.3f);
+        childEffect.SetActive(false);
+        yield return new WaitForSeconds(.2f);
+        childEffect.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        childEffect.SetActive(false);
+        yield return new WaitForSeconds(.1f);
+        childEffect.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        childEffect.SetActive(false);
+        yield return new WaitForSeconds(.1f);
+        childEffect.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        childEffect.SetActive(false);
+        yield return new WaitForSeconds(.1f);
+        #endregion
+
+        #region(postblink)
+        daWall.GetComponent<Collider2D>().enabled = false;
+        daWall.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0f);
+
+        yield return new WaitForSeconds(.7f);
+
+        daWall.GetComponent<Collider2D>().enabled = true;
+        daWall.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1f);
+
+        Destroy(gameObject);
+        #endregion
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            daWall = collision.gameObject;
+        }
+    }
 }
