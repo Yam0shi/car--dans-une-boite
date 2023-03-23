@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30094946be8ed194b8630c138c418d05, type: 3}
   m_Name: Collectible
   m_EditorClassIdentifier: 
-  value: 0
-  apparence: {fileID: 0}
-  Duration: 0
+  value: 1
+  apparence: {fileID: 6939722051456015323, guid: be034c3c011b41b4b978b6fd5dc9f366, type: 3}
+  Duration: 5
   type: 0

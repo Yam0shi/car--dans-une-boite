@@ -6,7 +6,7 @@ using UnityEngine;
 public class Collectible : ScriptableObject
 {
     [SerializeField] float value;
-    [SerializeField] GameObject apparence;
+    public GameObject apparence;
     [SerializeField] float Duration;
     [SerializeField] ObjectType type;
 
