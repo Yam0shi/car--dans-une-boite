@@ -33,11 +33,10 @@ public class CollectibleGeneration : MonoBehaviour
             else Destroy(child.gameObject);
         }
 
-        GameObject visuals = Instantiate(myCollectible.apparence);
+        GameObject visuals = Instantiate(data.apparence);
         visuals.transform.SetParent(transform);
         visuals.transform.localPosition = Vector3.zero;
         visuals.transform.rotation = Quaternion.identity;
         visuals.tag = "Item";
-        visuals.layer = LayerMask.NameToLayer("Items");
     }
 }
