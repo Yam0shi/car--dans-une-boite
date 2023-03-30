@@ -20,7 +20,6 @@ public class TheBox : MonoBehaviour
     void Update()
     {
         TheBoxMove();
-
     }
 
     void TheBoxMove()
@@ -52,6 +51,7 @@ public class TheBox : MonoBehaviour
             }
         }
         #endregion
+
         #region(calcul de la rotation)
         if (totalTurn < 0 && transform.rotation.eulerAngles.z > 350)
         {
@@ -84,6 +84,7 @@ public class TheBox : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z - turnRate * Time.deltaTime);
             }
         }
+        #endregion
     }
-    #endregion
+
 }
