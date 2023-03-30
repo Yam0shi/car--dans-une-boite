@@ -6,7 +6,7 @@ public class TrapsBehavior : MonoBehaviour
 {
     public bool affectGravity;
     public bool disappearwall;
-    private GameObject daWall;
+    [SerializeField] private GameObject daWall;
 
     void Start()
     {
@@ -107,12 +107,15 @@ public class TrapsBehavior : MonoBehaviour
         #region(postblink)
         daWall.GetComponent<Collider2D>().enabled = false;
         daWall.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0f);
-
-        yield return new WaitForSeconds(.7f);
+        Debug.Log("disparition");
+        yield return new WaitForSeconds(.5f);
 
         daWall.GetComponent<Collider2D>().enabled = true;
         daWall.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1f);
+        Debug.Log("appartion");
+        yield return new WaitForSeconds(.2f);
 
+        Debug.Log("Destruction");
         Destroy(gameObject);
         #endregion
     }

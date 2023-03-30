@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     public float speed;
 
     [Header("autre : ")]
-    [SerializeField] bool CanMove, deadOfTheGrave;
+    [SerializeField] bool CanMove;
+    [SerializeField] bool deadOfTheGrave;
 
     void Start()
     {
@@ -78,6 +79,7 @@ public class Player : MonoBehaviour
         if(collision.gameObject.CompareTag("Item"))
         {
             Points.AddPoint(1);
+            Destroy(collision.gameObject);
         }
     }
 
