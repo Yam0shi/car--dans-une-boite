@@ -5,14 +5,17 @@ using TMPro;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
-public class TrapGeneration : MonoBehaviour
+public class LevelBehavior : MonoBehaviour
 {
-    public static TrapGeneration instance;
+    public static LevelBehavior instance;
 
     [SerializeField] GameObject[] prefabTrap;
 
     [SerializeField] int randomPatern, chooseRotation;
-    [SerializeField] int[] randomRoation;
+    [SerializeField] int[] randomRotation;
+
+    public int roomNumber;
+
     void Start()
     {
         if (instance != null)
@@ -22,18 +25,21 @@ public class TrapGeneration : MonoBehaviour
 
         instance = this;
 
+        roomNumber = 0;
         StartCoroutine(RandomizerSpawnTrap());
     }
 
-    public static TrapGeneration GetInstance()
+    public static LevelBehavior GetInstance()
     {
         return instance;
     }
 
     public IEnumerator RandomizerSpawnTrap()
     {
+        roomNumber++;
+
         randomPatern = (int)Random.Range(0, 19);
-        chooseRotation = (int)Random.Range(0,7);
+        chooseRotation = (int)Random.Range(0, randomRotation.Length);
 
         yield return new WaitForSeconds(1);
 
@@ -42,7 +48,7 @@ public class TrapGeneration : MonoBehaviour
         #region(spawntrap)
         instanciateTrap.transform.SetParent(gameObject.transform);
         //instanciateTrap.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        instanciateTrap.transform.localRotation = new Quaternion(0, 0, randomRoation[chooseRotation], 1);
+        instanciateTrap.transform.localRotation = new Quaternion(0, 0, randomRotation[chooseRotation], 1);
         #endregion
 
         yield return new WaitForSeconds(2.5f);
