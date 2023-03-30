@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Points : MonoBehaviour
 {
@@ -10,7 +7,7 @@ public class Points : MonoBehaviour
     [SerializeField] TextMeshProUGUI epitaph;
     void Start()
     {
-        GoldOfKinzo = PlayerPrefs.GetInt("GoldOfKinoHidden");
+        GoldOfKinzo = PlayerPrefs.GetInt("GoldOfKinzoHidden");
     }
 
     void Update()
