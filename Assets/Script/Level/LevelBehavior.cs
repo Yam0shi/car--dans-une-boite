@@ -9,12 +9,15 @@ public class LevelBehavior : MonoBehaviour
 {
     public static LevelBehavior instance;
 
-    [SerializeField] GameObject[] prefabTrap;
-
-    [SerializeField] int randomPatern, chooseRotation;
-    [SerializeField] int[] randomRotation;
+    public GameObject[] prefabTrap;
+    public int randomPatern;
+    public int[] randomRotation;
 
     public int roomNumber;
+
+    public Vector2[] speed;
+    public int currentSpeed;
+
 
     void Start()
     {
@@ -26,34 +29,51 @@ public class LevelBehavior : MonoBehaviour
         instance = this;
 
         roomNumber = 0;
+        currentSpeed = 0;
         StartCoroutine(RandomizerSpawnTrap());
     }
-
     public static LevelBehavior GetInstance()
     {
         return instance;
     }
 
+
+    public void Update()
+    {
+        if (roomNumber == (int)speed[currentSpeed].y)
+        {
+            currentSpeed++;
+        }
+    }
+
     public IEnumerator RandomizerSpawnTrap()
     {
         roomNumber++;
+        float patternspeed = speed[currentSpeed].x;
 
-        randomPatern = (int)Random.Range(0, 19);
-        chooseRotation = (int)Random.Range(0, randomRotation.Length);
+        randomPatern = Random.Range(0, 19);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(patternspeed);
 
-        GameObject instanciateTrap = Instantiate(prefabTrap[randomPatern], transform.position, new Quaternion(0, 0, 0, 1));
+        GameObject instanciateTrap = Instantiate(prefabTrap[randomPatern], transform.position, transform.rotation);
 
         #region(spawntrap)
         instanciateTrap.transform.SetParent(gameObject.transform);
-        //instanciateTrap.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        instanciateTrap.transform.localRotation = new Quaternion(0, 0, randomRotation[chooseRotation], 1);
+        instanciateTrap.transform.localRotation = new Quaternion(0, 0, randomRotation[Random.Range(0, randomRotation.Length)], 1);
         #endregion
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(patternspeed * 3);
 
         Destroy(instanciateTrap);
+        WallAppear();
         StartCoroutine(RandomizerSpawnTrap());
+    }
+
+    public void WallAppear()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(true);
+        }
     }
 }

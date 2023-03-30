@@ -266,50 +266,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1824968353204833396, guid: 4c066a6482e099747a77443734a5a426, type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105480289250224331, guid: 4c066a6482e099747a77443734a5a426, type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
     - target: {fileID: 4292928619034513811, guid: 4c066a6482e099747a77443734a5a426, type: 3}
       propertyPath: m_Name
       value: theBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292928619034513812, guid: 4c066a6482e099747a77443734a5a426, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292928619034513812, guid: 4c066a6482e099747a77443734a5a426, type: 3}
-      propertyPath: randomRotation.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292928619034513812, guid: 4c066a6482e099747a77443734a5a426, type: 3}
-      propertyPath: randomRotation.Array.data[0]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292928619034513812, guid: 4c066a6482e099747a77443734a5a426, type: 3}
-      propertyPath: randomRotation.Array.data[1]
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292928619034513812, guid: 4c066a6482e099747a77443734a5a426, type: 3}
-      propertyPath: randomRotation.Array.data[2]
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4292928619034513812, guid: 4c066a6482e099747a77443734a5a426, type: 3}
-      propertyPath: randomRotation.Array.data[3]
-      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 4292928619034513813, guid: 4c066a6482e099747a77443734a5a426, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1121852033}
-    - target: {fileID: 4292928619034513813, guid: 4c066a6482e099747a77443734a5a426, type: 3}
-      propertyPath: m_InstanceId
-      value: -1298
-      objectReference: {fileID: 0}
     - target: {fileID: 4292928619034513814, guid: 4c066a6482e099747a77443734a5a426, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -353,14 +317,6 @@ PrefabInstance:
     - target: {fileID: 4292928619034513814, guid: 4c066a6482e099747a77443734a5a426, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6573762596431469577, guid: 4c066a6482e099747a77443734a5a426, type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
-    - target: {fileID: 6931457161385329978, guid: 4c066a6482e099747a77443734a5a426, type: 3}
-      propertyPath: m_TagString
-      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -816,7 +772,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 10
+  m_GravityScale: 100
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -845,7 +801,7 @@ MonoBehaviour:
   playerWalk:
   - {fileID: 2127270395}
   - {fileID: 1297556794}
-  speed: 10
+  speed: 20
   CanMove: 0
   deadOfTheGrave: 0
 --- !u!61 &316789291

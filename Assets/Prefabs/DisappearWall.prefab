@@ -173,7 +173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   affectGravity: 0
-  disappearwall: 1
+  disappear: 1
+  daWall: {fileID: 0}
 --- !u!1001 &2200932734880885645
 PrefabInstance:
   m_ObjectHideFlags: 0
