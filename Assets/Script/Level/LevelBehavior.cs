@@ -59,7 +59,7 @@ public class LevelBehavior : MonoBehaviour
 
         #region(spawntrap)
         instanciateTrap.transform.SetParent(gameObject.transform);
-        instanciateTrap.transform.localRotation = new Quaternion(0, 0, randomRotation[Random.Range(0, randomRotation.Length)], 1);
+        instanciateTrap.transform.localRotation = Quaternion.Euler(0, 0, randomRotation[Random.Range(0, randomRotation.Length)]);
         #endregion
 
         yield return new WaitForSeconds(patternspeed * 3);

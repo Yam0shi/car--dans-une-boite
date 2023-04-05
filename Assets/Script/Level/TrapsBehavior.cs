@@ -6,18 +6,35 @@ public class TrapsBehavior : MonoBehaviour
 {
     public bool affectGravity;
     public bool disappear;
+    public bool pochita;
     [SerializeField] private GameObject daWall;
+    private bool canmove = false;
+    private float thatspeed;
 
     void Start()
     {
-        float thatspeed = LevelBehavior.GetInstance().speed[LevelBehavior.GetInstance().currentSpeed].x;
+        thatspeed = LevelBehavior.GetInstance().speed[LevelBehavior.GetInstance().currentSpeed].x;
 
         StartCoroutine(Thingy(thatspeed));        
     }
 
+    private void Update()
+    {
+        if (canmove)
+        {
+            Transform target = gameObject.transform.Find("Waypoint").transform;
+            Transform seesaw = gameObject.transform.Find("Saw").transform;
+
+
+            seesaw.GetComponent<Collider2D>().enabled = true;
+            seesaw.GetComponent<SpriteRenderer>().enabled = true;
+            seesaw.position += (target.position - seesaw.position).normalized * thatspeed * 3 * Time.deltaTime;
+        }
+    }
+
     IEnumerator Thingy(float speed)
     {
-        #region(gestion du trap à son pop)
+        #region(gestion du trap ï¿½ son pop)
         GameObject childEffect = transform.GetChild(0).gameObject;
 
         if (disappear)
@@ -72,6 +89,11 @@ public class TrapsBehavior : MonoBehaviour
             childEffect.SetActive(false);
             daWall.GetComponent<Collider2D>().enabled = false;
             daWall.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0f);
+        }
+        else if (pochita)
+        {
+            GetComponent<Collider2D>().enabled = false;
+            canmove = true;
         }
         else
         {
