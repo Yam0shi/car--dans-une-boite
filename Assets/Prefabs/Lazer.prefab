@@ -179,7 +179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   affectGravity: 0
-  disappearwall: 0
+  disappear: 0
+  pochita: 0
   daWall: {fileID: 0}
 --- !u!50 &5170520303774667997
 Rigidbody2D:

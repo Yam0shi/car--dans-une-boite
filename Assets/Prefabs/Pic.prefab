@@ -149,6 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   affectGravity: 0
+  disappear: 0
+  pochita: 0
+  daWall: {fileID: 0}
 --- !u!50 &986539800655019965
 Rigidbody2D:
   serializedVersion: 4

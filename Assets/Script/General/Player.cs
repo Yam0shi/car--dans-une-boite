@@ -20,9 +20,12 @@ public class Player : MonoBehaviour
     [SerializeField] bool CanMove;
     [SerializeField] bool deadOfTheGrave;
     public GameObject dedSFX;
+    private bool isded;
 
     void Start()
     {
+        isded = false;
+        CanMove = true;
         deadOfTheGrave = false;
         myRb2d = GetComponent<Rigidbody2D>();
         theBox = GameObject.Find("theBox");
@@ -30,14 +33,13 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-
-        if(deadOfTheGrave)
+        if (!isded)
         {
-
-        }
-        else
-        {
-            if (CanMove)
+            if (deadOfTheGrave)
+            {
+                StartCoroutine(Dead());
+            }
+            else if(CanMove)
             {
                 PlayerMove();
             }
@@ -73,7 +75,7 @@ public class Player : MonoBehaviour
             CanMove = true;
         }
 
-        if(collision.gameObject.CompareTag("it's a trap"))
+        if (collision.gameObject.CompareTag("it's a trap"))
         {
             deadOfTheGrave = true;
         }
@@ -86,6 +88,7 @@ public class Player : MonoBehaviour
             Points.AddPoint(1);
             Destroy(collision.gameObject);
         }
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -99,8 +102,9 @@ public class Player : MonoBehaviour
 
     public IEnumerator Dead()
     {
+        isded = true;
         Instantiate(dedSFX, transform.position, transform.rotation);
-        GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
+        GetComponent<SpriteRenderer>().color = new Color (255, 255, 255, 0);
 
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(2);
