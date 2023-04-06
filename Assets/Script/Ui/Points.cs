@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Points : MonoBehaviour
 {
-     static int  GoldOfKinzo;
+     public static int  GoldOfKinzo;
     [SerializeField] TextMeshProUGUI epitaph;
     void Start()
     {
