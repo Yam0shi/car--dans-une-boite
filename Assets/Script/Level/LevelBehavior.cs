@@ -9,7 +9,8 @@ public class LevelBehavior : MonoBehaviour
 {
     public static LevelBehavior instance;
 
-    public GameObject[] prefabTrap;
+    public LevelPattern[] prefabs;
+    private bool gonnatuto;
     public int randomPatern;
     public int[] randomRotation;
 
@@ -28,6 +29,7 @@ public class LevelBehavior : MonoBehaviour
 
         instance = this;
 
+        gonnatuto = true;
         roomNumber = 0;
         currentSpeed = 0;
         StartCoroutine(RandomizerSpawnTrap());
@@ -40,22 +42,34 @@ public class LevelBehavior : MonoBehaviour
 
     public void Update()
     {
-        if (roomNumber == (int)speed[currentSpeed].y)
+        if (roomNumber != speed.Length &&  roomNumber == (int)speed[currentSpeed].y)
         {
             currentSpeed++;
+            gonnatuto = true;
         }
     }
-
+    
     public IEnumerator RandomizerSpawnTrap()
     {
         roomNumber++;
         float patternspeed = speed[currentSpeed].x;
+        GameObject instanciateTrap;
 
-        randomPatern = Random.Range(0, 19);
+        randomPatern = Random.Range(0, prefabs[currentSpeed].trapsPat.Length);
+
 
         yield return new WaitForSeconds(patternspeed);
 
-        GameObject instanciateTrap = Instantiate(prefabTrap[randomPatern], transform.position, transform.rotation);
+        if (gonnatuto)
+        {
+            instanciateTrap = Instantiate(prefabs[currentSpeed].tutoPat, transform.position, transform.rotation);
+            gonnatuto = false;
+        }
+        else
+        {
+            instanciateTrap = Instantiate(prefabs[currentSpeed].trapsPat[randomPatern], transform.position, transform.rotation);
+        }
+
 
         #region(spawntrap)
         instanciateTrap.transform.SetParent(gameObject.transform);
@@ -76,4 +90,11 @@ public class LevelBehavior : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(true);
         }
     }
+}
+
+[System.Serializable]
+public class LevelPattern
+{
+    public GameObject tutoPat;
+    public GameObject[] trapsPat;
 }
