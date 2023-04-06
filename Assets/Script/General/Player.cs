@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     [Header("autre : ")]
     [SerializeField] bool CanMove;
     [SerializeField] bool deadOfTheGrave;
+    public GameObject dedSFX;
 
     void Start()
     {
@@ -29,13 +30,17 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(CanMove)
-        {
-            PlayerMove();
-        }
+
         if(deadOfTheGrave)
         {
-            SceneManager.LoadScene(2);
+
+        }
+        else
+        {
+            if (CanMove)
+            {
+                PlayerMove();
+            }
         }
     }
 
@@ -91,4 +96,13 @@ public class Player : MonoBehaviour
         }
     }
     #endregion
+
+    public IEnumerator Dead()
+    {
+        Instantiate(dedSFX, transform.position, transform.rotation);
+        GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
+
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(2);
+    }
 }
