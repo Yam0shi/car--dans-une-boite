@@ -7,17 +7,6 @@ public class Skin : MonoBehaviour
 {
     [SerializeField] GameObject saveSkinbuy;
     public bool buyBool;
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-
-    }
-
     public void BuySkin(int needValue)
     {
 

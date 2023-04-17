@@ -5,14 +5,13 @@ using UnityEngine;
 public class SaveSkin : MonoBehaviour
 {
     public Sprite[] SkinBought;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        DontDestroyOnLoad(gameObject);
+
+        if (Input.GetKey(KeyCode.Backspace))
+        {
+            Points.AddPoint(1);
+        }
     }
 }
