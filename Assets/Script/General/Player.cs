@@ -77,6 +77,11 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.CompareTag("it's a trap"))
         {
+            Debug.LogWarning("gestion de la vie pas encore fait");
+        }
+
+        if (collision.gameObject.CompareTag("killzone"))
+        {
             deadOfTheGrave = true;
         }
     }
