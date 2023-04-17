@@ -8,6 +8,7 @@ public class Points : MonoBehaviour
     void Start()
     {
         GoldOfKinzo = PlayerPrefs.GetInt("GoldOfKinzoHidden");
+        Debug.Log(GoldOfKinzo);
     }
 
     void Update()

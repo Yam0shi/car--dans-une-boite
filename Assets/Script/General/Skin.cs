@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class Skin : MonoBehaviour
 {
-    [SerializeField] Button[] skinButtonRef;
+    [SerializeField] GameObject saveSkinbuy;
+    public bool buyBool;
+
     void Start()
     {
         
@@ -16,18 +18,33 @@ public class Skin : MonoBehaviour
 
     }
 
-    public void ByuSkin(int needValue)
+    public void BuySkin(int needValue)
     {
-        if (Points.GoldOfKinzo >= needValue)
+
+        if (!buyBool)
         {
-            Points.GoldOfKinzo -= needValue;
-            print(Points.GoldOfKinzo);
+            if (Points.GoldOfKinzo >= needValue)
+            {
+                Points.GoldOfKinzo -= needValue;
+                print(Points.GoldOfKinzo);
+                PlayerPrefs.SetInt("GoldOfKinzoHidden", Points.GoldOfKinzo);
+                buyBool = true;
+            }
         }
     }
 
     public void SetIndex(int buttonIndex)
     {
-        gameObject.transform.GetChild(buttonIndex).gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        if(buyBool == true)
+        {
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            saveSkinbuy.GetComponent<SaveSkin>().SkinBought[buttonIndex] = gameObject.GetComponent<Image>().sprite;
+            gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        }
     }
 
+    public void UseSkin()
+    {
+      gameObject.transform.GetChild(1).gameObject.SetActive(false);
+    }
 }
