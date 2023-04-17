@@ -215,6 +215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveSkinbuy: {fileID: 611966926}
   buyBool: 0
+  etatDachat: 0
+  buttonIndex: 7
 --- !u!1 &112585254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,6 +1012,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveSkinbuy: {fileID: 611966926}
   buyBool: 0
+  etatDachat: 0
+  buttonIndex: 1
 --- !u!1 &413686789
 GameObject:
   m_ObjectHideFlags: 0
@@ -1237,6 +1241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveSkinbuy: {fileID: 611966926}
   buyBool: 0
+  etatDachat: 0
+  buttonIndex: 8
 --- !u!1 &587592361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,7 +1342,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1549065230}
         m_TargetAssemblyTypeName: Skin, Assembly-CSharp
         m_MethodName: SetIndex
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2138,6 +2144,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveSkinbuy: {fileID: 611966926}
   buyBool: 0
+  etatDachat: 0
+  buttonIndex: 4
 --- !u!1 &756839936
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,6 +2317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveSkinbuy: {fileID: 611966926}
   buyBool: 0
+  etatDachat: 0
+  buttonIndex: 3
 --- !u!1 &894645404
 GameObject:
   m_ObjectHideFlags: 0
@@ -3097,6 +3107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveSkinbuy: {fileID: 611966926}
   buyBool: 0
+  etatDachat: 0
+  buttonIndex: 6
 --- !u!1 &1046724336
 GameObject:
   m_ObjectHideFlags: 0
@@ -3666,6 +3678,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveSkinbuy: {fileID: 611966926}
   buyBool: 0
+  etatDachat: 0
+  buttonIndex: 5
 --- !u!1 &1179897158
 GameObject:
   m_ObjectHideFlags: 0
@@ -4149,6 +4163,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveSkinbuy: {fileID: 611966926}
   buyBool: 0
+  etatDachat: 0
+  buttonIndex: 9
 --- !u!1 &1315650715
 GameObject:
   m_ObjectHideFlags: 0
@@ -4703,6 +4719,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveSkinbuy: {fileID: 611966926}
   buyBool: 0
+  etatDachat: 0
+  buttonIndex: 2
 --- !u!1 &1447889995
 GameObject:
   m_ObjectHideFlags: 0
@@ -5018,6 +5036,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveSkinbuy: {fileID: 611966926}
   buyBool: 0
+  etatDachat: 0
+  buttonIndex: 0
 --- !u!1 &1617734070
 GameObject:
   m_ObjectHideFlags: 0
