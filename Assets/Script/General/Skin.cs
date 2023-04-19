@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class Skin : MonoBehaviour
 {
     [SerializeField] GameObject saveSkinbuy;
-    public bool buyBool;
-    public float etatDachat;
-    public int buttonIndex;
+    [SerializeField] bool buyBool;
+    [SerializeField] int etatDachat;
+    [SerializeField] int buttonIndex;
 
     public void Start()
     {
@@ -21,7 +21,10 @@ public class Skin : MonoBehaviour
     {
         if (buyBool)
         {
+            PlayerPrefs.SetInt("étatDuBooléen" + buttonIndex, 1);
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            saveSkinbuy.GetComponent<SaveSkin>().SkinBought[buttonIndex] = gameObject.GetComponent<Image>().sprite;
+            Debug.Log("skin n°"+buttonIndex +" : " + PlayerPrefs.GetInt("étatDuBooléen" + buttonIndex));
             gameObject.transform.GetChild(1).gameObject.SetActive(true);
         }
     }
@@ -36,18 +39,6 @@ public class Skin : MonoBehaviour
                 PlayerPrefs.SetInt("GoldOfKinzoHidden", Points.GoldOfKinzo);
                 buyBool = true;
             }
-        }
-    }
-
-    public void SetIndex()
-    {
-        if(buyBool == true)
-        {
-            PlayerPrefs.SetInt("étatDuBooléen" + buttonIndex, 1);
-            Debug.Log(PlayerPrefs.GetInt("étatDuBooléen" + buttonIndex));
-            gameObject.transform.GetChild(0).gameObject.SetActive(false);
-            saveSkinbuy.GetComponent<SaveSkin>().SkinBought[buttonIndex] = gameObject.GetComponent<Image>().sprite;
-            gameObject.transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 
