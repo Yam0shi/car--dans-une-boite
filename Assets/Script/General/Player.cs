@@ -15,15 +15,17 @@ public class Player : MonoBehaviour
     [Range(0f, 20f)]
     public float speed;
 
+    public int life = 3;
+    public bool lifetransition;
+
     [Header("autre : ")]
     [SerializeField] bool CanMove;
     [SerializeField] bool deadOfTheGrave;
     public GameObject dedSFX;
-    private bool isded;
 
     void Start()
     {
-        isded = false;
+        lifetransition = false;
         CanMove = true;
         deadOfTheGrave = false;
         myRb2d = GetComponent<Rigidbody2D>();
@@ -32,7 +34,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (!isded)
+        if (!lifetransition)
         {
             if (deadOfTheGrave)
             {
@@ -106,11 +108,25 @@ public class Player : MonoBehaviour
 
     public IEnumerator Dead()
     {
-        isded = true;
-        Instantiate(dedSFX, transform.position, transform.rotation);
-        GetComponent<SpriteRenderer>().color = new Color (255, 255, 255, 0);
+        if (life == 0)
+        {
+            lifetransition = true;
+            Instantiate(dedSFX, transform.position, transform.rotation);
+            GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
 
-        yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(2);
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene(2);
+        }
+        else
+        {
+            lifetransition = true;
+            life--;
+            transform.position = Vector3.zero;
+
+            Debug.Log("life en moins");
+
+            yield return new WaitForSeconds(2f);
+            lifetransition = false;
+        }
     }
 }
