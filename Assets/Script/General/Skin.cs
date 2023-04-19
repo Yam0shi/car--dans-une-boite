@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Skin : MonoBehaviour
 {
-    [SerializeField] GameObject saveSkinbuy;
+    [SerializeField] GameObject saveSkinbuy, Player;
     [SerializeField] bool buyBool;
     [SerializeField] int etatDachat;
     [SerializeField] int buttonIndex;
@@ -45,5 +45,7 @@ public class Skin : MonoBehaviour
     public void UseSkin()
     {
         gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        Player.GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<Image>().sprite;
+
     }
 }
