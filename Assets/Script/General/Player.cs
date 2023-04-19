@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        DontDestroyOnLoad(gameObject);
+
         if (!lifetransition)
         {
             if (deadOfTheGrave)
@@ -74,6 +76,10 @@ public class Player : MonoBehaviour
         if(collision.gameObject.layer == 3)
         {
             CanMove = true;
+        }
+        if (collision.gameObject.CompareTag("MenuGround"))
+        {
+            CanMove = false;
         }
 
         if (collision.gameObject.CompareTag("it's a trap"))
