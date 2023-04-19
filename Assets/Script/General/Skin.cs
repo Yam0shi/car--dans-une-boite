@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class Skin : MonoBehaviour
 {
     [SerializeField] GameObject saveSkinbuy;
-    public bool buyBool;
-    public float etatDachat;
-    public int buttonIndex;
+    [SerializeField] bool buyBool;
+    [SerializeField] int etatDachat;
+    [SerializeField] int buttonIndex;
 
     public void Start()
     {
