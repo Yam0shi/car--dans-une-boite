@@ -19,6 +19,11 @@ public class LevelBehavior : MonoBehaviour
     public Vector2[] speed;
     public int currentSpeed;
 
+    private Player player;
+    private bool playerhasdied;
+
+    public Animator UIAnimator;
+
 
     void Start()
     {
@@ -33,6 +38,8 @@ public class LevelBehavior : MonoBehaviour
         roomNumber = 0;
         currentSpeed = 0;
         StartCoroutine(RandomizerSpawnTrap());
+
+        player = FindObjectOfType<Player>();
     }
     public static LevelBehavior GetInstance()
     {
@@ -51,33 +58,57 @@ public class LevelBehavior : MonoBehaviour
     
     public IEnumerator RandomizerSpawnTrap()
     {
+        //Augmentation du nombre de Room
         roomNumber++;
         float patternspeed = speed[currentSpeed].x;
         GameObject instanciateTrap;
 
-        randomPatern = Random.Range(0, prefabs[currentSpeed].trapsPat.Length);
+        if (!player.GetComponent<Player>().lifetransition)
+        {
+            GameObject.Find("Life").transform.GetChild(player.GetComponent<Player>().life).GetComponent<Animation>().Play("LifeDown_Anim");
 
+            if (player.GetComponent<Player>().life == 0)
+            {
+                yield return new WaitForSeconds(10f);
+            }
+            else
+            {
+                yield return new WaitForSeconds(2f);
+            }
+        }
 
-        yield return new WaitForSeconds(patternspeed);
-
+        //Sélection du patern
         if (gonnatuto)
         {
+            UIAnimator.Play("SpeedUp_Anim");
+            yield return new WaitForSeconds(1f);
+            UIAnimator.Play("ScoreUp_Anim");
+            yield return new WaitForSeconds(1f);
+
+            yield return new WaitForSeconds(patternspeed);
+
             instanciateTrap = Instantiate(prefabs[currentSpeed].tutoPat, transform.position, transform.rotation);
             gonnatuto = false;
         }
         else
         {
+            UIAnimator.Play("ScoreUp_Anim");
+            yield return new WaitForSeconds(1f);
+
+            yield return new WaitForSeconds(patternspeed);
+
+            randomPatern = Random.Range(0, prefabs[currentSpeed].trapsPat.Length);
             instanciateTrap = Instantiate(prefabs[currentSpeed].trapsPat[randomPatern], transform.position, transform.rotation);
         }
 
 
-        #region(spawntrap)
+        //Spawn du pattern
         instanciateTrap.transform.SetParent(gameObject.transform);
         instanciateTrap.transform.localRotation = Quaternion.Euler(0, 0, randomRotation[Random.Range(0, randomRotation.Length)]);
-        #endregion
 
         yield return new WaitForSeconds(patternspeed * 3);
 
+        //Reset A Zero
         Destroy(instanciateTrap);
         WallAppear();
         StartCoroutine(RandomizerSpawnTrap());
@@ -87,7 +118,8 @@ public class LevelBehavior : MonoBehaviour
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).gameObject.SetActive(true);
+            transform.GetChild(i).gameObject.GetComponent<Collider2D>().enabled = true;
+            transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1f);
         }
     }
 }

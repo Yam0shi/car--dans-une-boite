@@ -114,16 +114,14 @@ public class Player : MonoBehaviour
             Instantiate(dedSFX, transform.position, transform.rotation);
             GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(3f);
             SceneManager.LoadScene(2);
         }
         else
         {
-            lifetransition = true;
             life--;
+            lifetransition = true;
             transform.position = Vector3.zero;
-
-            Debug.Log("life en moins");
 
             yield return new WaitForSeconds(2f);
             lifetransition = false;

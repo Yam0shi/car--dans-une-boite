@@ -441,34 +441,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc21d6874ca6a846b3a168c8b782b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabTrap:
-  - {fileID: 5391268792424675391, guid: 3545e81d15d225d44a3900f407c233ba, type: 3}
-  - {fileID: 6327943650685506210, guid: d868d3f20510d88419e8f8ab66315fe2, type: 3}
-  - {fileID: 1061827160119814861, guid: 15ea0d799e6855b409df66f0fb88b8ae, type: 3}
-  - {fileID: 7007090640562675213, guid: 0fb97fd1330c7dd48ab6c0942a4ba75b, type: 3}
-  - {fileID: 2654890189096474673, guid: 4d86eec7063d4fd439a01b995629ce13, type: 3}
-  - {fileID: 2582224660596911501, guid: c9ae34075626b334fa459936de5bcad3, type: 3}
-  - {fileID: 7448408966986955763, guid: ebfa426a35888144d84d34f46ea37ab6, type: 3}
-  - {fileID: 6211996193555941500, guid: ef539ae6504e87a4682f2264634a862a, type: 3}
-  - {fileID: 7197416411253734231, guid: 8568ea32d3f04cd47a4f224b508391e5, type: 3}
-  - {fileID: 7321476561662116423, guid: 6f322f339d84e3349aa51da2b7046d99, type: 3}
-  - {fileID: 2299737640261768521, guid: 4d78935ec70eaba4290213b77088e985, type: 3}
-  - {fileID: 506495805219761974, guid: 066927bc47ae75b49aef85e5534ca9b1, type: 3}
-  - {fileID: 7118524252529139495, guid: fd07a469c6661c54ba0bb3b3cf0fd36f, type: 3}
-  - {fileID: 6501418980238545158, guid: bd4f7ca49bc7602488398a002cf1ca7e, type: 3}
-  - {fileID: 7791939577811640366, guid: ee0fa8fd99c03ea42895798c3bfb5f76, type: 3}
-  - {fileID: 7330548017914309578, guid: a1f0384750dd6f74191d91a4dfbf6038, type: 3}
-  - {fileID: 4305152522396287331, guid: 90fc9ae078d37804da6626cfc88e346b, type: 3}
-  - {fileID: 5560594267814881046, guid: a1f7da54d1564ce4e9b4c30d7128a52e, type: 3}
-  - {fileID: 6951801700295239723, guid: beec5db3ebd44fb4eaa8656cdcd64e70, type: 3}
-  - {fileID: 7782203760439925400, guid: a163d86da916e0f4aac305bb8ddc0fae, type: 3}
+  prefabs:
+  - tutoPat: {fileID: 0}
+    trapsPat: []
+  - tutoPat: {fileID: 0}
+    trapsPat: []
+  - tutoPat: {fileID: 0}
+    trapsPat: []
+  - tutoPat: {fileID: 0}
+    trapsPat: []
+  - tutoPat: {fileID: 0}
+    trapsPat: []
+  - tutoPat: {fileID: 0}
+    trapsPat: []
+  - tutoPat: {fileID: 0}
+    trapsPat: []
+  - tutoPat: {fileID: 0}
+    trapsPat: []
   randomPatern: 0
   randomRotation: 000000005a000000a6ffffffb4000000
   roomNumber: 0
   speed:
-  - {x: 2, y: 3}
-  - {x: 1, y: 10}
-  - {x: 0.5, y: 15}
+  - {x: 2, y: 5}
+  - {x: 1.75, y: 10}
+  - {x: 1.5, y: 15}
+  - {x: 1.25, y: 20}
+  - {x: 1, y: 30}
+  - {x: 0.75, y: 40}
+  - {x: 1.75, y: 15}
+  - {x: 0.5, y: 50}
   currentSpeed: 0
 --- !u!114 &4292928619034513813
 MonoBehaviour:
@@ -504,7 +505,7 @@ MonoBehaviour:
   - {x: 0.25451198, y: -11.140865, z: 0}
   m_ShapePathHash: 85149162
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1298
+  m_InstanceId: -3298
 --- !u!82 &4292928619034513802
 AudioSource:
   m_ObjectHideFlags: 0
