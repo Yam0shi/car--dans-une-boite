@@ -21,18 +21,43 @@ public class Player : MonoBehaviour
     [Header("autre : ")]
     [SerializeField] bool CanMove;
     public GameObject dedSFX;
+    private static Player instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            Debug.LogError("Found more than one input system in the scene manager.");
+        }
+        instance = this;
+        DontDestroyOnLoad(instance);
+    }
+
+    public static Player GetInstance()
+    {
+        return instance;
+    }
 
     void Start()
     {
         lifetransition = false;
         CanMove = true;
         myRb2d = GetComponent<Rigidbody2D>();
-        theBox = GameObject.Find("theBox");
     }
 
     void Update()
     {
-        DontDestroyOnLoad(gameObject);
+      
+        if(theBox == null)
+        {
+            Debug.Log(SceneManager.sceneCountInBuildSettings);
+            theBox = GameObject.Find("theBox");
+        }
+        if(theBox != null)
+        {
+
+        }
 
         if (CanMove)
         {
