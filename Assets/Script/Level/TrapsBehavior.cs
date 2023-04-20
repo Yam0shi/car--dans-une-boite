@@ -14,7 +14,7 @@ public class TrapsBehavior : MonoBehaviour
     {
         thatspeed = LevelBehavior.GetInstance().speed[LevelBehavior.GetInstance().currentSpeed].x;
 
-        StartCoroutine(Thingy(thatspeed));        
+        StartCoroutine(Thingy(thatspeed));
     }
 
     private void Update()

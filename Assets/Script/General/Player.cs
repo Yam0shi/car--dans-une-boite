@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
     [Header("autre : ")]
     [SerializeField] bool CanMove;
-    [SerializeField] bool deadOfTheGrave;
+    bool deadOfTheGrave;
     public GameObject dedSFX;
 
     void Start()
@@ -36,16 +36,9 @@ public class Player : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
-        if (!lifetransition)
+        if (CanMove)
         {
-            if (deadOfTheGrave)
-            {
-                StartCoroutine(Dead());
-            }
-            else if(CanMove)
-            {
-                PlayerMove();
-            }
+            PlayerMove();
         }
     }
 
@@ -84,7 +77,7 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.CompareTag("it's a trap"))
         {
-            Debug.LogWarning("gestion de la vie pas encore fait");
+            StartCoroutine(Dead());
         }
 
         if (collision.gameObject.CompareTag("killzone"))
@@ -128,6 +121,16 @@ public class Player : MonoBehaviour
             life--;
             lifetransition = true;
             transform.position = Vector3.zero;
+
+            if (LevelBehavior.GetInstance().transform.childCount == 5)
+            {
+                Destroy(LevelBehavior.GetInstance().transform.GetChild(4).gameObject);
+                LevelBehavior.GetInstance().Reset();
+            }
+            else
+            {
+                LevelBehavior.GetInstance().WallAppear();
+            }
 
             yield return new WaitForSeconds(2f);
             lifetransition = false;

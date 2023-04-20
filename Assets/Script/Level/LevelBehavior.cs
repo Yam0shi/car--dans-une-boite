@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelBehavior : MonoBehaviour
 {
@@ -19,13 +20,13 @@ public class LevelBehavior : MonoBehaviour
     public Vector2[] speed;
     public int currentSpeed;
 
-    private Player player;
-    private bool playerhasdied;
+    public GameObject player;
 
     public Animator UIAnimator;
+    public TextMeshProUGUI scoretext;
 
 
-    void Start()
+    void Awake()
     {
         if (instance != null)
         {
@@ -33,14 +34,18 @@ public class LevelBehavior : MonoBehaviour
         }
 
         instance = this;
+    }
 
+    private void Start()
+    {
         gonnatuto = true;
         roomNumber = 0;
         currentSpeed = 0;
-        StartCoroutine(RandomizerSpawnTrap());
+        player = GameObject.Find("Player");
 
-        player = FindObjectOfType<Player>();
+        StartCoroutine(RandomizerSpawnTrap());
     }
+
     public static LevelBehavior GetInstance()
     {
         return instance;
@@ -63,9 +68,10 @@ public class LevelBehavior : MonoBehaviour
         float patternspeed = speed[currentSpeed].x;
         GameObject instanciateTrap;
 
-        if (!player.GetComponent<Player>().lifetransition)
+        //Animation brisage de coeur
+        if (player.GetComponent<Player>().lifetransition)
         {
-            GameObject.Find("Life").transform.GetChild(player.GetComponent<Player>().life).GetComponent<Animation>().Play("LifeDown_Anim");
+            GameObject.Find("Life").transform.GetChild(player.GetComponent<Player>().life).GetComponent<Animator>().Play("LifeDown_Anim");
 
             if (player.GetComponent<Player>().life == 0)
             {
@@ -80,36 +86,34 @@ public class LevelBehavior : MonoBehaviour
         //Sélection du patern
         if (gonnatuto)
         {
-            UIAnimator.Play("SpeedUp_Anim");
-            yield return new WaitForSeconds(1f);
-            UIAnimator.Play("ScoreUp_Anim");
-            yield return new WaitForSeconds(1f);
+            if (currentSpeed != 0)
+            {
+                UIAnimator.Play("SpeedUp_Anim");
+                yield return new WaitForSeconds(1f);
+            }
 
-            yield return new WaitForSeconds(patternspeed);
+            ScoreSet();
+            yield return new WaitForSeconds(patternspeed + 1f);
 
             instanciateTrap = Instantiate(prefabs[currentSpeed].tutoPat, transform.position, transform.rotation);
             gonnatuto = false;
         }
         else
         {
-            UIAnimator.Play("ScoreUp_Anim");
-            yield return new WaitForSeconds(1f);
-
-            yield return new WaitForSeconds(patternspeed);
+            ScoreSet();
+            yield return new WaitForSeconds(patternspeed + 1f);
 
             randomPatern = Random.Range(0, prefabs[currentSpeed].trapsPat.Length);
             instanciateTrap = Instantiate(prefabs[currentSpeed].trapsPat[randomPatern], transform.position, transform.rotation);
         }
 
-
         //Spawn du pattern
         instanciateTrap.transform.SetParent(gameObject.transform);
         instanciateTrap.transform.localRotation = Quaternion.Euler(0, 0, randomRotation[Random.Range(0, randomRotation.Length)]);
+    }
 
-        yield return new WaitForSeconds(patternspeed * 3);
-
-        //Reset A Zero
-        Destroy(instanciateTrap);
+    public void Reset()
+    {
         WallAppear();
         StartCoroutine(RandomizerSpawnTrap());
     }
@@ -121,6 +125,24 @@ public class LevelBehavior : MonoBehaviour
             transform.GetChild(i).gameObject.GetComponent<Collider2D>().enabled = true;
             transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1f);
         }
+    }
+
+    private void ScoreSet()
+    {
+        if (roomNumber < 10)
+        {
+            scoretext.text = "00" + roomNumber;
+        }
+        else if (roomNumber < 100)
+        {
+            scoretext.text = "0" + roomNumber;
+        }
+        else
+        {
+            scoretext.text = "" + roomNumber;
+        }
+
+        UIAnimator.Play("ScoreUp_Anim");
     }
 }
 

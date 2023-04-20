@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2779144112072312724}
   - component: {fileID: 6442553582041483764}
   - component: {fileID: 5464952308168682270}
+  - component: {fileID: -1627127208291558181}
   m_Layer: 0
   m_Name: Fichier 54
-  m_TagString: it's a trap
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_Size: {x: 23.49, y: 14.910645}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!60 &5464952308168682270
@@ -176,6 +177,18 @@ PolygonCollider2D:
       - {x: 10.265405, y: 3.4065087}
       - {x: 10.265405, y: 7.3865037}
   m_UseDelaunayMesh: 0
+--- !u!114 &-1627127208291558181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118524252529139495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2321438ef160cc498789fa59110c587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &35624971961737815
 PrefabInstance:
   m_ObjectHideFlags: 0
