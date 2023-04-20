@@ -7,7 +7,6 @@ TagManager:
   - it's a trap
   - Item
   - Wall
-  - killzone
   - MenuGround
   layers:
   - Default

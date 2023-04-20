@@ -20,14 +20,12 @@ public class Player : MonoBehaviour
 
     [Header("autre : ")]
     [SerializeField] bool CanMove;
-    bool deadOfTheGrave;
     public GameObject dedSFX;
 
     void Start()
     {
         lifetransition = false;
         CanMove = true;
-        deadOfTheGrave = false;
         myRb2d = GetComponent<Rigidbody2D>();
         theBox = GameObject.Find("theBox");
     }
@@ -79,11 +77,6 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(Dead());
         }
-
-        if (collision.gameObject.CompareTag("killzone"))
-        {
-            deadOfTheGrave = true;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -109,9 +102,11 @@ public class Player : MonoBehaviour
     {
         if (life == 0)
         {
+            CanMove = false;
             lifetransition = true;
             Instantiate(dedSFX, transform.position, transform.rotation);
             GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
+            transform.GetChild(0).gameObject.SetActive(false);
 
             yield return new WaitForSeconds(3f);
             SceneManager.LoadScene(2);

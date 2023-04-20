@@ -93,7 +93,7 @@ public class LevelBehavior : MonoBehaviour
             }
 
             ScoreSet();
-            yield return new WaitForSeconds(patternspeed + 1f);
+            yield return new WaitForSeconds(1f);
 
             instanciateTrap = Instantiate(prefabs[currentSpeed].tutoPat, transform.position, transform.rotation);
             gonnatuto = false;
@@ -101,13 +101,14 @@ public class LevelBehavior : MonoBehaviour
         else
         {
             ScoreSet();
-            yield return new WaitForSeconds(patternspeed + 1f);
+            yield return new WaitForSeconds(1f);
 
             randomPatern = Random.Range(0, prefabs[currentSpeed].trapsPat.Length);
             instanciateTrap = Instantiate(prefabs[currentSpeed].trapsPat[randomPatern], transform.position, transform.rotation);
         }
 
         //Spawn du pattern
+        UIAnimator.Play("Default_Anim");
         instanciateTrap.transform.SetParent(gameObject.transform);
         instanciateTrap.transform.localRotation = Quaternion.Euler(0, 0, randomRotation[Random.Range(0, randomRotation.Length)]);
     }
