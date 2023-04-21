@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     private AudioSource aS;
 
     [Header("autre : ")]
-    [SerializeField] bool CanMove;
+    public bool CanMove;
     public GameObject dedSFX;
     private static Player instance;
 
@@ -47,8 +47,6 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        lifetransition = false;
-        CanMove = true;
         myRb2d = GetComponent<Rigidbody2D>();
         aS = GetComponent<AudioSource>();
     }
@@ -171,7 +169,8 @@ public class Player : MonoBehaviour
             transform.position = Vector3.zero;
 
             yield return new WaitForSeconds(2f);
-            lifetransition = false;
         }
+
+        lifetransition = false;
     }
 }

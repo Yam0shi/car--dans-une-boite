@@ -11,18 +11,37 @@ public class Buttons : MonoBehaviour
     [SerializeField] EventSystem myEventSystem;
     [SerializeField] Player playerScript;
 
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+
+        if (SceneManager.GetActiveScene().buildIndex != 2)
+        {
+            playerScript = player.GetComponent<Player>();
+            playerScript.life = 3;
+            player.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+            player.transform.GetChild(0).gameObject.SetActive(true);
+            playerScript.lifetransition = false;
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            playerScript.CanMove = false;
+            player.transform.position = new Vector3(3, -1, 0);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            playerScript.CanMove = true;
+            player.transform.position = Vector3.zero;
+        }
+
+    }
+
     private void Update()
     {
         if (player == null)
         {
             player = GameObject.Find("Player");
-        }
-        if (SkinScreen != null)
-        {
-            player.transform.position = new Vector3(3, -1, 0);
-            playerScript = player.GetComponent<Player>();
-            playerScript.life = 3;
-            player.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
         }
     }
 
@@ -49,4 +68,5 @@ public class Buttons : MonoBehaviour
         myEventSystem.SetSelectedGameObject(skinButon);
         player.SetActive(true);
     }
+
 }
