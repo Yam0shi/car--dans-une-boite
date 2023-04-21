@@ -26,7 +26,6 @@ public class LevelBehavior : MonoBehaviour
     public Animator UIAnimator;
     public TextMeshProUGUI scoretext;
 
-
     void Awake()
     {
         if (instance != null)

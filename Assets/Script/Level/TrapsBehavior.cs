@@ -102,6 +102,11 @@ public class TrapsBehavior : MonoBehaviour
             GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
         }
 
+        if (GetComponent<AudioSource>())
+        {
+            GetComponent<AudioSource>().Play();
+        }
+
         #endregion
     }
 

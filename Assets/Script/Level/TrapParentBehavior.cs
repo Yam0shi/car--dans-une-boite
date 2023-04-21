@@ -14,7 +14,7 @@ public class TrapParentBehavior : MonoBehaviour
 
     IEnumerator ResetLevel(float speed)
     {
-        yield return new WaitForSeconds(speed * 3);
+        yield return new WaitForSeconds((speed * 2f) + 1f);
         LevelBehavior.GetInstance().Reset();
         Destroy(gameObject);
     }

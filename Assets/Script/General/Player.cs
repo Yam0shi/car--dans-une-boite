@@ -19,6 +19,12 @@ public class Player : MonoBehaviour
     public int life = 3;
     public bool lifetransition;
 
+    [Header("Audio : ")]
+    public AudioClip hurtAC;
+    public AudioClip deathAC;
+    public AudioClip moneyAC;
+    private AudioSource aS;
+
     [Header("autre : ")]
     [SerializeField] bool CanMove;
     public GameObject dedSFX;
@@ -44,6 +50,7 @@ public class Player : MonoBehaviour
         lifetransition = false;
         CanMove = true;
         myRb2d = GetComponent<Rigidbody2D>();
+        aS = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -108,12 +115,14 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(Dead());
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Item"))
         {
+            aS.PlayOneShot(moneyAC);
             Points.AddPoint(1);
             Destroy(collision.gameObject);
         }
@@ -147,6 +156,7 @@ public class Player : MonoBehaviour
 
         if (life <= 0)
         {
+            aS.PlayOneShot(deathAC);
             CanMove = false;
             Instantiate(dedSFX, transform.position, transform.rotation);
             GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
@@ -157,6 +167,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            aS.PlayOneShot(hurtAC);
             transform.position = Vector3.zero;
 
             yield return new WaitForSeconds(2f);
