@@ -143,6 +143,11 @@ public class LevelBehavior : MonoBehaviour
 
     private void ScoreSet()
     {
+        if(Player.bestScore < roomNumber)
+        {
+            Player.bestScore = roomNumber;
+            PlayerPrefs.SetInt("bestScoreSaving", Player.bestScore);
+        }
         if (roomNumber < 10)
         {
             scoretext.text = "00" + roomNumber;

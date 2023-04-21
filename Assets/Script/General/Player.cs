@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,6 +31,8 @@ public class Player : MonoBehaviour
     public GameObject dedSFX;
     public GameObject hurtSFX;
     private static Player instance;
+    public static int bestScore;
+    [SerializeField] TextMeshProUGUI BestScoreTxt;
 
     private void Awake()
     {
@@ -50,10 +53,17 @@ public class Player : MonoBehaviour
     {
         myRb2d = GetComponent<Rigidbody2D>();
         aS = GetComponent<AudioSource>();
+        PlayerPrefs.GetInt("bestScoreSaving");
     }
 
     void Update()
     {
+        if(BestScoreTxt == null)
+        {
+            BestScoreTxt = GameObject.Find("HighScoreTxt").GetComponent<TextMeshProUGUI>();
+        }
+        BestScoreTxt.text = bestScore.ToString("000");
+
         if (theBox == null)
         {
             theBox = GameObject.Find("theBox");
