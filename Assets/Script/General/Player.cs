@@ -33,8 +33,6 @@ public class Player : MonoBehaviour
     public GameObject moneySFX;
     public int currentmoney;
     private static Player instance;
-    public static int bestScore;
-    [SerializeField] TextMeshProUGUI BestScoreTxt;
 
     private void Awake()
     {
@@ -60,12 +58,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(BestScoreTxt == null)
-        {
-            BestScoreTxt = GameObject.Find("HighScoreTxt").GetComponent<TextMeshProUGUI>();
-        }
-        BestScoreTxt.text = bestScore.ToString("000");
-
         if (theBox == null)
         {
             theBox = GameObject.Find("theBox");
