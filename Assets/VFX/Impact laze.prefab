@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1925677323547918911}
   - component: {fileID: 1925677323547918880}
   - component: {fileID: 1925677323547918881}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4837,7 +4837,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1925677323589201992}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Impact laze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4853,13 +4853,13 @@ Transform:
   m_GameObject: {fileID: 1925677323589201993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.4965997, y: -2.83353, z: -34.007}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.2727263, y: 2.2727263, z: 2.2727268}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1925677323788828207}
   - {fileID: 1925677323547918911}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1925677323788827090
 GameObject:
@@ -4872,7 +4872,7 @@ GameObject:
   - component: {fileID: 1925677323788828207}
   - component: {fileID: 1925677323788827088}
   - component: {fileID: 1925677323788827089}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}

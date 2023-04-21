@@ -125,6 +125,8 @@ public class Player : MonoBehaviour
 
     public IEnumerator Dead()
     {
+        life--;
+
         if (life == 0)
         {
             CanMove = false;
@@ -138,7 +140,6 @@ public class Player : MonoBehaviour
         }
         else
         {
-            life--;
             lifetransition = true;
             transform.position = Vector3.zero;
 

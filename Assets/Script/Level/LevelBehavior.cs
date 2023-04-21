@@ -13,6 +13,7 @@ public class LevelBehavior : MonoBehaviour
     public LevelPattern[] prefabs;
     private bool gonnatuto;
     public int randomPatern;
+    private int lastchoice;
     public int[] randomRotation;
 
     public int roomNumber;
@@ -54,7 +55,7 @@ public class LevelBehavior : MonoBehaviour
 
     public void Update()
     {
-        if (roomNumber != speed.Length &&  roomNumber == (int)speed[currentSpeed].y)
+        if (currentSpeed != speed.Length && roomNumber == (int)speed[currentSpeed].y)
         {
             currentSpeed++;
             gonnatuto = true;
@@ -96,6 +97,7 @@ public class LevelBehavior : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             instanciateTrap = Instantiate(prefabs[currentSpeed].tutoPat, transform.position, transform.rotation);
+            lastchoice = 0;
             gonnatuto = false;
         }
         else
@@ -104,6 +106,18 @@ public class LevelBehavior : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             randomPatern = Random.Range(0, prefabs[currentSpeed].trapsPat.Length);
+
+            if (randomPatern == lastchoice)
+            {
+                randomPatern++;
+
+                if (randomPatern >= prefabs[currentSpeed].trapsPat.Length)
+                {
+                    randomPatern = 0;
+                }
+            }
+            lastchoice = randomPatern;
+
             instanciateTrap = Instantiate(prefabs[currentSpeed].trapsPat[randomPatern], transform.position, transform.rotation);
         }
 

@@ -1706,9 +1706,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1157549544}
   - {fileID: 1116221568}
   - {fileID: 1372189700}
-  - {fileID: 1157549544}
   m_Father: {fileID: 787310719}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4639,7 +4639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: -5
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -4656,8 +4656,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: 19845ed7fd95c184c99090852e912e64, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 09d60ca6445741346b9c264c25ef4df8, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 2d97c8a17eebc3147865d25e33a8c51d, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 19845ed7fd95c184c99090852e912e64, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal

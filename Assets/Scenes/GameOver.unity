@@ -584,6 +584,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ad1f093aada1946b517015d0aaffeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SkinScreen: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &1217567093
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,7 +834,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4ecfcc6bca3382d419d80bbb5c88f831, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ab1f85cce0570c14196416f9aa28bb78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
