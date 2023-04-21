@@ -2567,11 +2567,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8229268940432873565, guid: ced84839055792646b6846f670fd24db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.68
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8229268940432873565, guid: ced84839055792646b6846f670fd24db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.31
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8229268940432873565, guid: ced84839055792646b6846f670fd24db, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5071,6 +5071,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkinScreen: {fileID: 1450335750}
   player: {fileID: 1535053374}
+  skinButon: {fileID: 1157549543}
+  myEventSystem: {fileID: 394357786}
 --- !u!114 &1179897164
 MonoBehaviour:
   m_ObjectHideFlags: 0

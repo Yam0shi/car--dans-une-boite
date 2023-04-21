@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
-    [SerializeField] GameObject SkinScreen, player;
+    [SerializeField] GameObject SkinScreen, player, skinButon;
+    [SerializeField] EventSystem myEventSystem;
     public void StartGame()
     {
         SceneManager.LoadScene(1);
@@ -24,6 +26,7 @@ public class Buttons : MonoBehaviour
     public  void SkinShopExit()
     {
         SkinScreen.SetActive(false);
+        myEventSystem.SetSelectedGameObject(skinButon);
         player.SetActive(true);
     }
 }
