@@ -299,6 +299,7 @@ MonoBehaviour:
   moneyAC: {fileID: 8300000, guid: 958e144a8297edc48a19f426f1d38255, type: 3}
   CanMove: 0
   dedSFX: {fileID: 5491460454127673325, guid: d9dd52cd94b5f804681dfc519332ad60, type: 3}
+  hurtSFX: {fileID: 5491460454127673325, guid: 1f0adc98137bbe74ebaee16a0f98ba5e, type: 3}
 --- !u!82 &1535053380
 AudioSource:
   m_ObjectHideFlags: 0

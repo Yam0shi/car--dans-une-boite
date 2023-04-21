@@ -2319,6 +2319,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8229268940432873567, guid: ced84839055792646b6846f670fd24db, type: 3}
+      propertyPath: hurtSFX
+      value: 
+      objectReference: {fileID: 5491460454127673325, guid: 1f0adc98137bbe74ebaee16a0f98ba5e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

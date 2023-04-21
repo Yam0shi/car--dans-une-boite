@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     [Header("autre : ")]
     public bool CanMove;
     public GameObject dedSFX;
+    public GameObject hurtSFX;
     private static Player instance;
 
     private void Awake()
@@ -73,6 +74,11 @@ public class Player : MonoBehaviour
         if (CanMove)
         {
             PlayerMove();
+        }
+        else
+        {
+            playerWalk[0].SetActive(false);
+            playerWalk[1].SetActive(false);
         }
     }
 
@@ -156,7 +162,7 @@ public class Player : MonoBehaviour
         {
             aS.PlayOneShot(deathAC);
             CanMove = false;
-            Instantiate(dedSFX, transform.position, transform.rotation);
+            StartCoroutine(InstantiateSFX(dedSFX));
             GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
             transform.GetChild(0).gameObject.SetActive(false);
 
@@ -166,6 +172,7 @@ public class Player : MonoBehaviour
         else
         {
             aS.PlayOneShot(hurtAC);
+            StartCoroutine(InstantiateSFX(hurtSFX));
             transform.position = Vector3.zero;
 
             yield return new WaitForSeconds(2f);
@@ -173,4 +180,12 @@ public class Player : MonoBehaviour
 
         lifetransition = false;
     }
+
+    private IEnumerator InstantiateSFX(GameObject sfx)
+    {
+        GameObject clonesfx = Instantiate(sfx, transform.position, transform.rotation);
+        yield return new WaitForSeconds(1f);
+        Destroy(clonesfx);
+    }
+
 }
