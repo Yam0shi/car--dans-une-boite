@@ -427,6 +427,7 @@ MonoBehaviour:
   timer: 1
   totalTurn: 1
   turnRate: 270
+  turnDeadZone: 40
   turnBoxSFX: {fileID: 4292928619034513802}
   TurnSound: {fileID: 8300000, guid: 0ec138eee1988244aae85656eb687ff8, type: 3}
 --- !u!114 &4292928619034513812
@@ -474,6 +475,7 @@ MonoBehaviour:
   player: {fileID: 0}
   UIAnimator: {fileID: 0}
   scoretext: {fileID: 0}
+  moneytext: {fileID: 0}
 --- !u!114 &4292928619034513813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,7 +510,7 @@ MonoBehaviour:
   - {x: 0.25451198, y: -11.140865, z: 0}
   m_ShapePathHash: 85149162
   m_Mesh: {fileID: 0}
-  m_InstanceId: 57320
+  m_InstanceId: 63032
 --- !u!82 &4292928619034513802
 AudioSource:
   m_ObjectHideFlags: 0
