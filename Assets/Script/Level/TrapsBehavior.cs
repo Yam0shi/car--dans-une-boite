@@ -24,6 +24,8 @@ public class TrapsBehavior : MonoBehaviour
             Transform target = gameObject.transform.Find("Waypoint").transform;
             Transform seesaw = gameObject.transform.Find("Saw").transform;
 
+            seesaw.GetComponent<Animator>().SetBool("Turn", true);
+
 
             seesaw.GetComponent<Collider2D>().enabled = true;
             seesaw.GetComponent<SpriteRenderer>().enabled = true;

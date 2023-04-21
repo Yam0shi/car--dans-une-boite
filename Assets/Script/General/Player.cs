@@ -133,11 +133,21 @@ public class Player : MonoBehaviour
     public IEnumerator Dead()
     {
         life--;
+        lifetransition = true;
+
+        if (LevelBehavior.GetInstance().transform.childCount == 5)
+        {
+            Destroy(LevelBehavior.GetInstance().transform.GetChild(4).gameObject);
+            LevelBehavior.GetInstance().Reset();
+        }
+        else
+        {
+            LevelBehavior.GetInstance().WallAppear();
+        }
 
         if (life <= 0)
         {
             CanMove = false;
-            lifetransition = true;
             Instantiate(dedSFX, transform.position, transform.rotation);
             GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
             transform.GetChild(0).gameObject.SetActive(false);
@@ -147,18 +157,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            lifetransition = true;
             transform.position = Vector3.zero;
-
-            if (LevelBehavior.GetInstance().transform.childCount == 5)
-            {
-                Destroy(LevelBehavior.GetInstance().transform.GetChild(4).gameObject);
-                LevelBehavior.GetInstance().Reset();
-            }
-            else
-            {
-                LevelBehavior.GetInstance().WallAppear();
-            }
 
             yield return new WaitForSeconds(2f);
             lifetransition = false;
