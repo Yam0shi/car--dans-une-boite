@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class TheBox : MonoBehaviour
 {
     [SerializeField] bool hastriggered;
-    [SerializeField] float timer, totalTurn, turnRate;
+    [SerializeField] float timer, totalTurn, turnRate, turnDeadZone;
     [SerializeField] AudioSource turnBoxSFX;
     [SerializeField] AudioClip TurnSound;
 
@@ -37,7 +37,7 @@ public class TheBox : MonoBehaviour
             {
                 hastriggered = true;
                 totalTurn += 90;
-                timer = 90 / turnRate + 0.08f;
+                timer = turnDeadZone / turnRate + 0.08f;
             }
         }
         else if (Input.GetAxis("Right Trigger") >= 0.1 || Input.GetButtonDown("Right Button"))
@@ -47,7 +47,7 @@ public class TheBox : MonoBehaviour
             {
                 hastriggered = true;
                 totalTurn -= 90;
-                timer = 90 / turnRate + 0.08f;
+                timer = turnDeadZone / turnRate + 0.08f;
             }
         }
         #endregion
