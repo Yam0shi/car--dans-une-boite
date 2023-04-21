@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,7 +29,6 @@ public class Player : MonoBehaviour
         if (instance != null)
         {
             Destroy(gameObject);
-            Debug.LogError("Found more than one input system in the scene manager.");
         }
         instance = this;
         DontDestroyOnLoad(instance);
@@ -48,15 +48,21 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-      
-        if(theBox == null)
+        if (theBox == null)
         {
-            Debug.Log(SceneManager.sceneCountInBuildSettings);
             theBox = GameObject.Find("theBox");
+            myRb2d.gravityScale = 0;
         }
         if(theBox != null)
         {
+            myRb2d.gravityScale = 100;
+        }
 
+        if (GetComponent<SpriteRenderer>().color == new Color(255, 255, 255, 0))
+        {
+            myRb2d.gravityScale = 0;
+            myRb2d.velocity = Vector3.zero;
+            CanMove = false;
         }
 
         if (CanMove)
@@ -116,6 +122,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+
         if (collision.gameObject == theBox)
         {
             CanMove = false;
@@ -127,7 +134,7 @@ public class Player : MonoBehaviour
     {
         life--;
 
-        if (life == 0)
+        if (life <= 0)
         {
             CanMove = false;
             lifetransition = true;

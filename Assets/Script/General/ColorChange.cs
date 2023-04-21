@@ -19,22 +19,16 @@ public class ColorChange : MonoBehaviour
 
     IEnumerator ColorSwap(Int32 waitForSwap)
     {
-/*        b.tint.value = Color.red;
-        yield return new WaitForSeconds(waitForSwap);*/
         b.tint.value = Color.yellow;
-/*        yield return new WaitForSeconds(waitForSwap);
-        b.tint.value = Color.blue;*/
         yield return new WaitForSeconds(waitForSwap);
         b.tint.value = Color.gray;
         yield return new WaitForSeconds(waitForSwap);
-/*        b.tint.value = Color.magenta;
-        yield return new WaitForSeconds(waitForSwap);*/
         b.tint.value = Color.cyan;
         yield return new WaitForSeconds(waitForSwap);
         b.tint.value = Color.green;
         yield return new WaitForSeconds(waitForSwap);
         b.tint.value = Color.grey;
         yield return new WaitForSeconds(waitForSwap);
-        StartCoroutine(ColorSwap(4));
+        StartCoroutine(ColorSwap(3));
     }
 }

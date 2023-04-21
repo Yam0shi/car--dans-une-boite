@@ -10,7 +10,6 @@ public class SaveSkin : MonoBehaviour
         if (instance != null)
         {
             Destroy(gameObject);
-            Debug.LogError("Found more than one input system in the scene manager.");
         }
         instance = this;
         DontDestroyOnLoad(instance);
