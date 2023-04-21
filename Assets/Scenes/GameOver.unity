@@ -586,6 +586,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkinScreen: {fileID: 0}
   player: {fileID: 0}
+  skinButon: {fileID: 0}
+  myEventSystem: {fileID: 0}
+  playerScript: {fileID: 0}
 --- !u!1 &1217567093
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,7 +647,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -655,8 +658,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 21300000, guid: 1ef2f04094eaf8148bc21505012b3682, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 0d82a91f3f035a847a50edd84dd1dc54, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: d6a7288446b583b489f614da51a8994b, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -701,7 +704,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5a2f57625c56c694a8da559945433417, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0d82a91f3f035a847a50edd84dd1dc54, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
