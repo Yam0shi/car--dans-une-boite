@@ -19,6 +19,7 @@ public class Buttons : MonoBehaviour
         {
             playerScript = player.GetComponent<Player>();
             playerScript.life = 3;
+            playerScript.currentmoney = 0;
             player.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
             player.transform.GetChild(0).gameObject.SetActive(true);
             playerScript.lifetransition = false;

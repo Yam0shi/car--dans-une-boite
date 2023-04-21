@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     public bool CanMove;
     public GameObject dedSFX;
     public GameObject hurtSFX;
+    public GameObject moneySFX;
+    public int currentmoney;
     private static Player instance;
     public static int bestScore;
     [SerializeField] TextMeshProUGUI BestScoreTxt;
@@ -136,6 +138,8 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Item"))
         {
+            StartCoroutine(InstantiateSFX(moneySFX));
+            currentmoney++;
             aS.PlayOneShot(moneyAC);
             Points.AddPoint(1);
             Destroy(collision.gameObject);
@@ -145,11 +149,11 @@ public class Player : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-
         if (collision.gameObject == theBox)
         {
             CanMove = false;
         }
+
     }
     #endregion
 

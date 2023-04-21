@@ -25,6 +25,7 @@ public class LevelBehavior : MonoBehaviour
 
     public Animator UIAnimator;
     public TextMeshProUGUI scoretext;
+    public TextMeshProUGUI moneytext;
 
     void Awake()
     {
@@ -54,6 +55,8 @@ public class LevelBehavior : MonoBehaviour
 
     public void Update()
     {
+        moneytext.text = player.GetComponent<Player>().currentmoney + "";
+
         if (currentSpeed != speed.Length && roomNumber == (int)speed[currentSpeed].y)
         {
             currentSpeed++;
