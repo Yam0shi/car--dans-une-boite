@@ -28,7 +28,7 @@ public class Buttons : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             playerScript.CanMove = false;
-            player.transform.position = new Vector3(3, -1, 0);
+            player.transform.position = new Vector3(3, -2.5f, 0);
         }
         else if (SceneManager.GetActiveScene().buildIndex == 1)
         {

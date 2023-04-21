@@ -7,9 +7,13 @@ public class Skin : MonoBehaviour
     [SerializeField] bool buyBool;
     [SerializeField] int etatDachat;
     [SerializeField] int buttonIndex;
+    [SerializeField] AudioClip buyAC, useAC;
+    private AudioSource aS;
 
     public void Start()
     {
+        aS = GameObject.Find("Player").GetComponent<AudioSource>(); ;
+
         etatDachat = PlayerPrefs.GetInt("étatDuBooléen"+buttonIndex);
 
         if(etatDachat == 1)
@@ -38,6 +42,8 @@ public class Skin : MonoBehaviour
                 print(Points.GoldOfKinzo);
                 PlayerPrefs.SetInt("GoldOfKinzoHidden", Points.GoldOfKinzo);
                 buyBool = true;
+
+                aS.PlayOneShot(buyAC);
             }
         }
     }
@@ -47,5 +53,6 @@ public class Skin : MonoBehaviour
         gameObject.transform.GetChild(1).gameObject.SetActive(false);
         Player.GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<Image>().sprite;
 
+        aS.PlayOneShot(useAC);
     }
 }
